@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\AdvertisementModule\Http\Controllers\UserAdvertisementController;
 
 /////////////////      Advertisements          ////////////////////////
 Route::resource('/advertisements', 'AdvertisementController');
@@ -20,5 +21,12 @@ Route::prefix('advertisements')->group(function() {
     Route::get('/activation/{id}','AdvertisementController@activate');
     Route::get('/delete/{id}','AdvertisementController@destroy');
 
+});
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('advertisement')->group(function () {
+        Route::get('/{id}', [UserAdvertisementController::class , 'showAdvertisement'])->name('show.advertisement');
+    });
 });
 
