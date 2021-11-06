@@ -26,6 +26,8 @@ Route::prefix('advertisements')->group(function() {
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('advertisement')->group(function () {
+        Route::get('/all', [UserAdvertisementController::class , 'getAllAdvertisement'])->name('all.advertisement');
+
         Route::get('/{id}', [UserAdvertisementController::class , 'showAdvertisement'])->name('show.advertisement');
     });
 });

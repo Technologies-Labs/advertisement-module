@@ -3,12 +3,18 @@
 namespace Modules\AdvertisementModule\Repositories;
 
 use Modules\AdvertisementModule\Entities\Advertisement;
+use Modules\AdvertisementModule\Transformers\AdvertisementTransformer;
 
 class AdvertisementRepository
 {
     public function getAllAdvertisements()
     {
         return Advertisement::all();
+    }
+
+    public function getAllAdvertisementByPosition($position)
+    {
+       return (new AdvertisementTransformer())->transformAllAdvertisements($position);
     }
 
     public function getAdvertisement($id)

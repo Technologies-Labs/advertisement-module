@@ -14,6 +14,11 @@ class UserAdvertisementController extends Controller
         $this->advertisementRepository = new AdvertisementRepository();
     }
 
+    public function getAllAdvertisement()
+    {
+        return view('advertisementmodule::website.advertisements.index');
+    }
+
     public function showAdvertisement($id)
     {
         $advertisement = $this->advertisementRepository->getAdvertisement($id);
