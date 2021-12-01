@@ -11,8 +11,9 @@ class AllAdvertisements extends Component
 {
     use WithPagination;
     private $advertisementRepository;
-    public $advertisements;
-    public $position;
+
+    public  $position;
+
     protected $paginationTheme = 'bootstrap';
 
     public function __construct()
@@ -22,7 +23,10 @@ class AllAdvertisements extends Component
 
     public function render()
     {
-        $this->advertisements = $this->advertisementRepository->getAllAdvertisementByPosition($this->position);
-        return view('advertisementmodule::livewire.all-advertisements');
+        $advertisements = $this->advertisementRepository->getAllAdvertisementByPosition($this->position , 1)->getData();
+
+        return view('advertisementmodule::livewire.all-advertisements',[
+            'advertisements'    => $advertisements
+        ]);
     }
 }

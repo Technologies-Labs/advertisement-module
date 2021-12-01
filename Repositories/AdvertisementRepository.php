@@ -2,6 +2,7 @@
 
 namespace Modules\AdvertisementModule\Repositories;
 
+use League\Fractal\Resource\Collection;
 use Modules\AdvertisementModule\Entities\Advertisement;
 use Modules\AdvertisementModule\Transformers\AdvertisementTransformer;
 
@@ -12,9 +13,12 @@ class AdvertisementRepository
         return Advertisement::all();
     }
 
-    public function getAllAdvertisementByPosition($position)
+    public function getAllAdvertisementByPosition($position , $paginate = 10)
     {
-       return (new AdvertisementTransformer())->transformAllAdvertisements($position);
+        $advertisements = Advertisement::where('position',$position)->paginate($paginate);
+        return new Collection($advertisements, new AdvertisementTransformer);
+
+    // return (new AdvertisementTransformer())->transformAllAdvertisements($position , $paginate = 10);
     }
 
     public function getAdvertisement($id)
