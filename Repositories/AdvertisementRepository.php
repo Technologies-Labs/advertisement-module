@@ -15,7 +15,7 @@ class AdvertisementRepository
 
     public function getAllAdvertisementByPosition($position , $paginate = 10)
     {
-        $advertisements = Advertisement::where('position',$position)->paginate($paginate);
+        $advertisements = Advertisement::where('position',$position)->paginate($paginate,['*'],null);
         return new Collection($advertisements, new AdvertisementTransformer);
 
     // return (new AdvertisementTransformer())->transformAllAdvertisements($position , $paginate = 10);

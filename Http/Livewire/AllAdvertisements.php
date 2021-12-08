@@ -9,24 +9,32 @@ use Modules\AdvertisementModule\Repositories\AdvertisementRepository;
 
 class AllAdvertisements extends Component
 {
-    use WithPagination;
     private $advertisementRepository;
 
     public  $position;
 
-    protected $paginationTheme = 'bootstrap';
+    public  $perPage = 1;
 
-    public function __construct()
+    public function loadMore()
+    {
+        $this->perPage += 1;
+    }
+
+    // protected $paginationTheme = 'bootstrap';
+    public function getAdvertisementsProperty()
+    {
+        return $this->advertisementRepository->getAllAdvertisementByPosition($this->position , $this->perPage)->getData();
+    }
+
+    public function boot()
     {
         $this->advertisementRepository = new AdvertisementRepository();
     }
 
     public function render()
     {
-        $advertisements = $this->advertisementRepository->getAllAdvertisementByPosition($this->position , 1)->getData();
-
         return view('advertisementmodule::livewire.all-advertisements',[
-            'advertisements'    => $advertisements
+            'advertisements'    => $this->advertisements
         ]);
     }
 }
