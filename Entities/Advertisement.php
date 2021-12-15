@@ -19,5 +19,8 @@ class Advertisement extends Model
         static::addGlobalScope(new AdvertisementScope);
     }
 
-
+    protected static function newFactory()
+    {
+        return \Modules\AdvertisementModule\Database\factories\AdvertisementFactory::new();
+    }
 }

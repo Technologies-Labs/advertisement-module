@@ -16,6 +16,7 @@ class AdvertisementModuleDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        \Modules\AdvertisementModule\Entities\Advertisement::factory(1000)->create();
         // $this->call("OthersTableSeeder");
     }
 }
