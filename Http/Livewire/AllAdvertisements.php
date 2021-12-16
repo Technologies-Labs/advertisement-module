@@ -13,11 +13,11 @@ class AllAdvertisements extends Component
 
     public  $position;
 
-    public  $perPage = 1;
+    public  $perPage = 20;
 
     public function loadMore()
     {
-        $this->perPage += 1;
+        $this->perPage += 20;
     }
 
     // protected $paginationTheme = 'bootstrap';

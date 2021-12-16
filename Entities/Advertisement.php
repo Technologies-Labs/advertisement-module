@@ -2,6 +2,7 @@
 
 namespace Modules\AdvertisementModule\Entities;
 
+use Database\Factories\AdvertisementsFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,6 +22,6 @@ class Advertisement extends Model
 
     protected static function newFactory()
     {
-        return \Modules\AdvertisementModule\Database\factories\AdvertisementFactory::new();
+        return AdvertisementsFactory::new();
     }
 }
