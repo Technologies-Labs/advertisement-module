@@ -1,7 +1,7 @@
 <div id="page-contents" class="row merged20">
     <div class="col-lg-12">
         <div class="main-wraper">
-            <h4 class="main-title">Advertisements</h4>
+            <h4 class="main-title">اعلانات</h4>
 
             <div class="row col-xs-6" id="advertisement">
                 @foreach ($advertisements as $advertisement)
